@@ -74,12 +74,21 @@ Route::get('paises', function(){
         "Argentina" => [
             "capital" => "Buenos Aires",
             "moneda" => "Peso argentino",
-            "poblacion" => 45
+            "poblacion" => 45,
+            "ciudades" => [ 
+                "Buenos aires",
+                "Cordoba",
+                "Rosario"
+            ]
         ],
         "Venezuela" => [
             "capital" => "Caracas",
             "moneda" => "Bolivar",
-            "poblacion" => 28
+            "poblacion" => 28,
+            "ciudades" => [ 
+                "Caracas",
+                "Ciudad Bolivar"
+            ]
         ]
     ];
 
