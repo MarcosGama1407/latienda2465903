@@ -3,7 +3,7 @@
 @section('contenido')
 @if( session('mensajito'))
 <div class="row">
-    <span>{{ session('mensajito')  }}</span>
+    <span class="blue-text text-darken-2">{{ session('mensajito')  }}</span>
 </div>
 @endif
 <div class="row">
@@ -18,7 +18,7 @@
             <div class="input-field col s6">
                 <input id="nombre" name="nombre" type="text" class="validate" value="{{ old('nombre') }}" placeholder="Nombre de producto">
                 <label for="nombre">Nombre del producto</label>
-                <span> {{ $errors->first('nombre') }} </span>
+                <span class="blue-text text-darken-2"> {{ $errors->first('nombre') }} </span>
             </div>
         </div>
         <div class="row">
@@ -27,14 +27,14 @@
                     {{ old('nombre') }}
                 </textarea>
                 <label for="desc">Descripcion</label>
-                <span> {{ $errors->first('desc') }} </span>
+                <span class="blue-text text-darken-2"> {{ $errors->first('desc') }} </span>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <input name="precio" id="precio" type="text" class="validate" value="{{ old('precio') }}" placeholder="Precio de producto">
                 <label for="precio">Precio</label>
-                <span> {{ $errors->first('precio') }} </span>
+                <span class="blue-text text-darken-2"> {{ $errors->first('precio') }} </span>
             </div>
         </div>
         <div class="row">
@@ -46,7 +46,7 @@
                     @endforeach
                 </select>
                 <label for="marca">Elija Marca</label>
-                <span> {{ $errors->first('marca') }} </span>
+                <span class="blue-text text-darken-2"> {{ $errors->first('marca') }} </span>
             </div>
         </div>
         <div class="row"> 
@@ -58,7 +58,7 @@
                     @endforeach
                 </select>
                 <label for="categoria">Elija Categoria</label>
-                <span> {{ $errors->first('categoria') }} </span>
+                <span class="blue-text text-darken-2"> {{ $errors->first('categoria') }} </span>
             </div>
         </div>
         <div class="row"> <!--Input para cargar archivos-->
@@ -71,7 +71,7 @@
                     <input class="file-path validate" type="text">
                 </div>
             </div>
-            <span>{{  $errors->first('imagen')  }}</span>
+            <span class="blue-text text-darken-2">{{  $errors->first('imagen')  }}</span>
         </div>
         <button class="btn waves-effect waves-light grey darken-1" type="submit">Guardar</button>
 </div>
