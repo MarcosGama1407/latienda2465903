@@ -12,7 +12,7 @@
 
 <div class="row">
     
-    <form method="POST" action="{{ route('productos.store') }}" class="col s12">
+    <form method="POST" action="{{ route('productos.store') }}" class="col s12" enctype="multipart/form-data">
     @csrf
         <div class="row">
             <div class="input-field col s6">
@@ -49,7 +49,7 @@
                 <span> {{ $errors->first('marca') }} </span>
             </div>
         </div>
-        <div class="row">
+        <div class="row"> 
             <div class="input-field col s8">
                 <select name="categoria" id="categoria">
                     @foreach($categorias as $categoria)
@@ -61,7 +61,7 @@
                 <span> {{ $errors->first('categoria') }} </span>
             </div>
         </div>
-        <div class="row">
+        <div class="row"> <!--Input para cargar archivos-->
             <div class="file-field input-field col s8">
                 <div class="btn grey darken-1">
                     <span>Imagen</span>
@@ -71,6 +71,7 @@
                     <input class="file-path validate" type="text">
                 </div>
             </div>
+            <span>{{  $errors->first('imagen')  }}</span>
         </div>
         <button class="btn waves-effect waves-light grey darken-1" type="submit">Guardar</button>
 </div>

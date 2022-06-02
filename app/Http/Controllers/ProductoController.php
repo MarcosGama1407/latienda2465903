@@ -46,13 +46,15 @@ class ProductoController extends Controller
      */
     public function store(Request $r)
     {
+
         //1.Establecer las reglas de validacion que apliquen a cada campo
         $reglas = [
             "nombre" => 'required|alpha',
             "desc" => 'required|min:20|max:50',
             "precio" => 'required|numeric',
             "marca" => 'required',
-            "categoria" => 'required'
+            "categoria" => 'required',
+            "imagen"=> 'required|image'
         ];
 
         //mensajes:
@@ -60,7 +62,8 @@ class ProductoController extends Controller
             "required" => "Campo obligatorio",
             "alpha" => "Solo letras",
             "min" => "Se permiten minimo 20 caracteres",
-            "numeric" => "Solo numeros"
+            "numeric" => "Solo numeros",
+            "image" => "Carge la imagen"
         ];
 
         //2.Crear objeto validador
@@ -77,12 +80,23 @@ class ProductoController extends Controller
                     ->withInput();
         }
         else{
+            //Acceder a propiedades del archivo cargado
+            $archivo = $r->imagen;
+            $nombre_archivo = $archivo->getClientOriginalName();
+            //Establecetr la ubicacion donde se almacena el archivo
+            $ruta=public_path()."/img";
+            //mover el archivo
+            $archivo->move( $ruta,
+                            $nombre_archivo 
+            );
+
             //Crear nuevo producto<<entity>>
             $p = new Producto;
             //Asignar valores a los atributos
             //del producto
             $p->nombre = $r->nombre;
-            $p->desc = $r->desc;
+            $p->desc = $r->desc; 
+            $p->imagen = $nombre_archivo; 
             $p->precio = $r->precio;
             $p->marca_id = $r->marca;
             $p->categoria_id = $r->categoria;
@@ -90,7 +104,7 @@ class ProductoController extends Controller
             $p->save();
             //redireccionar al formulario con mensaje exito(session)
             return redirect('productos/create')
-                ->with('mensajito' , "Producto registrado");
+              ->with('mensajito' , "Producto registrado");
             }
     }
 
