@@ -15,7 +15,11 @@ class Producto extends Model
     //se expresa asi
 
     public function categoria(){
-        return $this->belongTo(Categoria::class);
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function marca(){
+        return $this->belongsTo(Marca::class);
     }
 
 }
